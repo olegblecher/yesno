@@ -1,0 +1,218 @@
+<html>
+<head>
+
+<style type="text/css">
+
+
+@keyframes firstline {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  50% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+  visibility: hidden;
+  opacity: 0;
+  }
+}
+
+
+@keyframes secondline {
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes ansyesshow {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  50% {
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+  visibility: hidden;
+  opacity: 0;
+  }
+}
+
+
+@keyframes button {
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+
+body {
+    background-color: #9099A2;
+}
+
+.texts, .answers {
+    margin: 10px auto auto auto;
+    transition: 3s;
+    width: 600px;
+    position: relative;
+    text-align: center;
+    color: #6D7993;
+    font-size: 150%;
+    letter-spacing: 3px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.firstline {
+    visibility: hidden;
+    opacity: 0;
+    animation: 6s linear 1s firstline;
+}
+
+.secondline {
+    animation: 3s linear 4s forwards secondline;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.button {
+    visibility: hidden;
+    opacity: 0;
+    animation: 1s linear 7s forwards button;
+    border: none;
+    text-align: center;
+    background-color: #D5D5D5;
+    color: black;
+    padding: 16px 52px;
+    display: inline-block;
+    border: 2px solid #555555;
+    box-shadow: 2px 8px #96858F;
+}
+
+.button:hover {
+   background-color: #cecccc;
+}
+
+.button:active {
+    box-shadow: 0 4px #96858F;
+    transform: translateY(4px);
+}
+
+.buttons {
+    width: 600px;
+    margin: auto auto auto auto;
+    position: relative;
+}
+
+.ja {
+    position: absolute;
+    top: 400px;
+    left: 50px;
+    transition: 0.5s;
+}
+
+.nej {
+    position: absolute;
+    top: 400px;
+    left: 400px;
+    transition: 0.5s;
+}
+
+.answers {
+    position: relative;
+    width: 800px;
+    text-align: center;
+    top: 500px;
+}
+
+.ansyes {
+    visibility: hidden;
+    opacity: 0;
+    transition: 1s;
+}
+
+.ansno {
+    visibility: hidden;
+    opacity: 0;
+    transition: 1s;
+}
+
+.animateyes {
+    animation: ansyesshow 3s linear 2;
+}
+
+
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+function showYes() {
+    var ja = $('.ansyes');
+    ja.addClass('animateyes');
+    setTimeout(function() {
+        ja.removeClass('animateyes');
+    }, 10000);
+}
+
+function showNo() {
+    var nej = $('.ansno');
+    nej.addClass('animateyes');
+    setTimeout(function() {
+        nej.removeClass('animateyes');
+    }, 10000);
+}
+
+
+$(document).ready(function() {
+    $('.ja').on("click", function() {
+        showYes();
+    });
+    $('.nej').on("click", function() {
+        showNo();
+    });
+
+})
+
+
+
+$(function(){
+    $(".nej").on({
+        mouseover:function(){
+            $(this).css({
+                left:(Math.random()*500)+"px",
+                top:(Math.random()*500)+"px",
+            });
+        }
+    });
+});
+</script>
+</head>
+<body>
+<div class="texts">
+  <div class="firstline">
+    <h2>Hello visitor!</h2>
+  </div>
+  <div class="secondline">
+    <h2>Are you an idiot?</h2>
+  </div>
+</div>
+<div class="buttons">
+  <button class="button ja">YES</button>
+  <button class="button nej">NO</button>
+</div>
+<div class="answers">
+  <div id="ansyes" class="ansyes">
+    <h2>Congratulations! You are an idiot!</h2>
+  </div>
+  <div class="ansno">
+    <h2>Well done, you're not an idiot!</h2>
+  </div>
+</div>
+</body>
+</html>
